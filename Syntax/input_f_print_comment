@@ -1,0 +1,15 @@
+#len input f comments
+word = input("Enter word here: \n")
+word_length = len(word)
+
+print(f"In word {word} are {word_length} characters \n" * 3)
+
+
+
+
+"""
+Enter word here: asdfvas
+In word asdfvas are 7 characters 
+In word asdfvas are 7 characters 
+In word asdfvas are 7 characters 
+"""
