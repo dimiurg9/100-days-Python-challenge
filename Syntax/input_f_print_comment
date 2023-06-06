@@ -3,6 +3,7 @@ word = input("Enter word here: \n")
 word_length = len(word)
 print(f"In word {word} are {word_length} characters \n" * 3)
 
+
 # format money so only 2 digits after dot
 bill = 20.55444444
 print_total = "Each person should pay: ${price:.2f}"
