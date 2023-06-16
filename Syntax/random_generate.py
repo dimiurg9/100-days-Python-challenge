@@ -5,7 +5,7 @@ https://docs.python.org/3/library/random.html
 
 import random
 
-#randit is a to b included
+#randit is including a and  b
 def random_number(a, b) -> int:
     a_integer = random.randint(a, b)
     return a_integer
