@@ -10,7 +10,6 @@ Ueban = {"grade":1, "heigh": 175}
 students_list = [Adam, Paylik, Vanyatko, Ueban]
 studens_heits = []
 
-count = 0
 for names in students_list:
     if names["grade"] == 1:
         studens_heits.append(names["heigh"])
