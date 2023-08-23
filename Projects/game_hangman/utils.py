@@ -24,7 +24,6 @@ def is_letter_in_word(word,word_list_modified, letter):
         else:
             count_letter += 1
             continue
-
     return list_a
 
 def continue_game():
