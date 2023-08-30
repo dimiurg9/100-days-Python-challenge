@@ -5,7 +5,8 @@ class Fruit:
         self.shape = shape
 
     def print_color_shape(self):
-        print(f"this is {self.shape} and {self.color}")
+        # print(f"this is {self.shape} and {self.color}")
+        return f"this is {self.shape} and {self.color}"
 
 
 

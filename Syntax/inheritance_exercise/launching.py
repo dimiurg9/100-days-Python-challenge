@@ -3,10 +3,13 @@ import orange
 
 
 f = fruit.Fruit("orange", "square")
-print(f.print_color_shape())
+fruit_print = f.print_color_shape()
+print(fruit_print)
 
-o = orange.Orange("red", "square", 3)
-print(o.shape)
+o = orange.Orange("red", "sircle", 3)
+print(o.acid_level)
+
 o.acid_level = 9
 print(o.acid_level)
+o.print_all()
 
