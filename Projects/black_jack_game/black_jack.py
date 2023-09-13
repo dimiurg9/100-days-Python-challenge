@@ -1,12 +1,10 @@
 import random
 from replit import clear
+from art import logo
 
 def another_game():
     clear()
-    print("")
-    print("")
-    print("another_game ######")
-    if input("another game y/n") == "y":
+    if input("another game y/n \n") == "y":
         clear()
         play()
     else:
@@ -18,43 +16,16 @@ def get_card():
     print(f"dealed {card}")
     return card
 
-# def play(total):
-#     print("play ######")
-#     player_total = total
-#     while player_total < 22:
-#         play_more = str(input("another card? y/n "))
-#         if play_more == "y":
-#             another_card = get_card()
-#             player_total = total + another_card
-#             print(f"your card is {another_card} and yur total is: {player_total}")
-#             if player_total > 21:
-#                 return player_total
-#         else:
-#             return player_total
-#     return player_total
-
-# def computer_play(computer_deal):
-#     print("Computer_play ######")
-#     computer_total = computer_deal
-#     while computer_total < 17:
-#         random_card = get_card()
-#         computer_total = computer_deal + random_card
-#         print(f"random card {random_card}")
-#     print(f"computer total is {computer_total}")
-#     return computer_total
-
 def compare(computer_final, player_final):
-    print("compare executing")
-    # if computer_final == 21 and len(computer_final) == 2:
-    #     return 0
     if computer_final > 21 and player_final > 21:
         return 1
-    if computer_final <= 21 and computer_final > player_final:
-        return 2
-    if computer_final <=21 and computer_final < player_final:
-        return 3
     if player_final > 21 and computer_final < 22:
         return 4
+    if computer_final <= 21 and computer_final > player_final:
+        return 2
+    if computer_final <= 21 and computer_final < player_final:
+        return 3
+
 
 def is_ice(deal):
     for cards in deal:
@@ -66,7 +37,7 @@ def is_ice(deal):
 def player_turn(player_deal):
     current = player_deal
     while sum(player_deal) < 22:
-        another_card = input(f"you have {sum(player_deal)} on hands. Another card? y/n")
+        another_card = input(f"you have {sum(player_deal)} on hands. Another card? y/n \n")
         if another_card == "y":
             current.append(get_card())
             if sum(current) > 21:
@@ -93,6 +64,7 @@ def computer_turn(computer_deal):
     return sum(current)
 
 def play():
+    print(logo)
     computer_deal = []
     player_deal = []
     for i in range(2):
@@ -105,10 +77,13 @@ def play():
 
     player_final = player_turn(player_deal)
     print(f"player final {player_final}")
-    computer_final = computer_turn(computer_deal)
-
-    if compare(computer_final, player_final) == 0:
+    if sum(computer_deal) == 21 and len(computer_deal) == 2:
         print("Dealer has a Black Jack")
+        another_game()
+
+    computer_final = computer_turn(computer_deal)
+    print(f"Dealer played with {computer_final}")
+
     if compare(computer_final, player_final) == 1:
         print(f"Draw. Both players bust: computer {computer_final} and player {player_final}")
     if compare(computer_final, player_final) == 2:
@@ -117,6 +92,7 @@ def play():
         print(f"You won! Computer: {computer_final}. You: {player_final}")
     if compare(computer_final, player_final) == 4:
         print(f"You bust! Computer: {computer_final}. You: {player_final}")
+
 
     another_game()
 
