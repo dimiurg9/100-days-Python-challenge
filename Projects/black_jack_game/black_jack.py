@@ -1,8 +1,15 @@
+"""
+Black Jack game
+"""
 import random
 from replit import clear
 from art import logo
 
 def another_game():
+    """
+    Ask if person would like to continue the game or quit
+    :return: none #it will reiterate the game or quit
+    """
     clear()
     if input("another game y/n \n") == "y":
         clear()
@@ -11,12 +18,22 @@ def another_game():
         exit()
 
 def get_card():
+    """
+    Serve one card upon request
+    :return: int card
+    """
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     card = random.sample(cards, 1)[0]
-    print(f"dealed {card}")
+    print(f"Dealed {card}")
     return card
 
 def compare(computer_final, player_final):
+    """
+    Compare two players final values
+    :param computer_final:
+    :param player_final:
+    :return: int: status code
+    """
     if computer_final > 21 and player_final > 21:
         return 1
     if player_final > 21 and computer_final < 22:
@@ -25,9 +42,22 @@ def compare(computer_final, player_final):
         return 2
     if computer_final <= 21 and computer_final < player_final:
         return 3
+    if computer_final < 21 and player_final < 21:
+        if computer_final == player_final:
+            return 6
+    if computer_final > 21 and player_final < 22:
+        return 7
+    else:
+        return 5
 
 
 def is_ice(deal):
+    """
+    If player went bust, method check if there is an ice on players hands,
+    if so, it will change ice value 11 into value 1
+    :param deal: list of cards
+    :return: list with changed values
+    """
     for cards in deal:
         if cards == 11:
             deal.remove(11)
@@ -35,13 +65,19 @@ def is_ice(deal):
     return deal
 
 def player_turn(player_deal):
+    """
+    Promt player if another card should be served
+    :param player_deal: list of card at first serve
+    :return: final list of cards
+    """
     current = player_deal
     while sum(player_deal) < 22:
-        another_card = input(f"you have {sum(player_deal)} on hands. Another card? y/n \n")
+        another_card = input(f"You have {sum(player_deal)} on hands. Another card? y/n \n")
         if another_card == "y":
             current.append(get_card())
             if sum(current) > 21:
                 current = is_ice(current)
+                player_turn(current)
             else:
                 player_turn(current)
         if another_card == "n":
@@ -51,7 +87,11 @@ def player_turn(player_deal):
     return sum(current)
 
 def computer_turn(computer_deal):
-    print("computer turn executed")
+    """
+    Makes dialer serve to itself until reach 17
+    :param computer_deal: first serve list
+    :return: final list of cards on dealers hands
+    """
     current = computer_deal
     while sum(current) < 17:
         current.append(get_card())
@@ -64,6 +104,10 @@ def computer_turn(computer_deal):
     return sum(current)
 
 def play():
+    """
+    Main method to start the game and evaluate final results
+    :return:
+    """
     print(logo)
     computer_deal = []
     player_deal = []
@@ -92,6 +136,12 @@ def play():
         print(f"You won! Computer: {computer_final}. You: {player_final}")
     if compare(computer_final, player_final) == 4:
         print(f"You bust! Computer: {computer_final}. You: {player_final}")
+    if compare(computer_final, player_final) == 6:
+        print(f"Its a draw: Computer: {computer_final}. You: {player_final}")
+    if compare(computer_final, player_final) == 5:
+        print(f"You won: {computer_final}. You: {player_final}")
+    if compare(computer_final, player_final) == 5:
+        print(f"Computer: {computer_final}. You: {player_final}")
 
 
     another_game()
