@@ -138,7 +138,7 @@ def play():
         print(f"You bust! Computer: {computer_final}. You: {player_final}")
     if compare(computer_final, player_final) == 6:
         print(f"Its a draw: Computer: {computer_final}. You: {player_final}")
-    if compare(computer_final, player_final) == 5:
+    if compare(computer_final, player_final) == 7:
         print(f"You won: {computer_final}. You: {player_final}")
     if compare(computer_final, player_final) == 5:
         print(f"Computer: {computer_final}. You: {player_final}")
