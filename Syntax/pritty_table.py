@@ -27,3 +27,8 @@ print("Sorted by population descending/ascending, removed border, left alligned 
 x.reversesort = True
 x.border = False
 print(x.get_string(sortby="Population"))
+
+
+print("************")
+print("HTML formatting ")
+print(x.get_html_string(attributes={"id":"my_table", "class":"red_table"}))
