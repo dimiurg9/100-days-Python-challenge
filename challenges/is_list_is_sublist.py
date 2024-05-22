@@ -1,6 +1,7 @@
 """
 two lists with no repeted numbers passed as arguments,
 find out if list 2 is a sublist of list 1
+TODO: test cases with second list lenght more than first will fail. To add determination of bigger list
 """
 
 def is_sublist(list1, list2):
@@ -24,6 +25,9 @@ def is_sublist(list1, list2):
 def challenge():
     list1 = [1, 2, 3, 4, 5, 6, 7]
     list2 = [2, 3, 4]
+
+    # list2 = [1, 2, 3, 4, 5, 6, 7]
+    # list1 = [2, 3, 4]
 
     if is_sublist(list1, list2):
         print("is sublist")

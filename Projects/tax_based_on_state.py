@@ -1,6 +1,6 @@
 """
 Create method which takes stated and income as an argument
-and return incom after tax deduction
+and return income after tax deduction
 Fed tax = 10%
 """
 taxes_by_state = {"CA": 3, "WA":5, "NY":12 }
